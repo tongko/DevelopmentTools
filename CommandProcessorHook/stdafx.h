@@ -12,6 +12,7 @@
 #include <windows.h>
 #include <strsafe.h>
 #include <debugapi.h>
+#include <tchar.h>
 
 using namespace std;
 

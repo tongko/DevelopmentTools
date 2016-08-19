@@ -6,17 +6,13 @@
 
 #ifdef _DEBUG
 
-#define NamedMemTrace ::OutputDebugString
+#define NamedMemTrace TRACE
 
 #else
 
 #define NameMemTrace __noop
 
 #endif
-
-#include <AccCtrl.h>
-#include <AclAPI.h>
-#include <memory>
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -48,16 +44,17 @@ class CNamedMem
 		CNamedMem& operator=(const T& value);
 
 	private:
-		VOID	InitSyncObjects(const SECURITY_ATTRIBUTES* sa, LPCTSTR lpszName);
+		VOID		InitSyncObjects(const SECURITY_ATTRIBUTES* sa, LPCTSTR lpszName);
+		VOID		SetName(LPCTSTR szName);
 
 	private:
-		LPTSTR		m_szName;
-		DWORD		m_dwSize;
+		LPTSTR			m_szName;
+		DWORD			m_dwSize;
 
-		HANDLE		m_hView;
-		LPVOID		m_pMapped;
+		CAutoHandle		m_hView;
+		T*				m_pMapped;
 
-		HANDLE		m_hLock;
-		HANDLE		m_hRequest;
-		HANDLE		m_hRespond;
+		CAutoHandle		m_hLock;
+		CAutoHandle		m_hRequest;
+		CAutoHandle		m_hRespond;
 };

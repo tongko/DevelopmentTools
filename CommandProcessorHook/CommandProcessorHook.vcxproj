@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoLock.h" />
+    <ClInclude Include="class.h" />
     <ClInclude Include="HookHandler.h" />
     <ClInclude Include="NamedMem.h" />
     <ClInclude Include="stdafx.h" />

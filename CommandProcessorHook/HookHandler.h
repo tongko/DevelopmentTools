@@ -1,10 +1,5 @@
 #pragma once
 
-#include <chrono>
-
-using namespace chrono;
-typedef	system_clock::time_point TimePoint;
-
 class CHookHandler
 {
 	public:
@@ -32,6 +27,18 @@ class CHookHandler
 		DWORD		m_dwBufferSize;
 		DWORD		m_dwWaitElapse;
 
-		TimePoint	m_tpLastCheck;
+		//std::chrono::system_clock::time_point	m_tpLastCheck;
+
+		//	Named mem
+		CNamedMem<CMDPROC_SETTINGS>			m_settings;
+		CNamedMem<CMDPROC_INFO>				m_info;
+		CNamedMem<CMDPROC_LAYOUT_INFO>		m_layoutInfo;
+		CNamedMem<CMDPROC_COPY_INFO>		m_copyInfo;
+		CNamedMem<CONSOLE_CURSOR_INFO>		m_cursorInfo;
+		CNamedMem<CHAR_INFO>				m_buffer;
+		CNamedMem<MOUSE_EVENT_RECORD>		m_mouseEvents;
+		CNamedMem<SIZE>						m_scrollPos;
+
+		CStdOut								m_hStdOut;
 };
 

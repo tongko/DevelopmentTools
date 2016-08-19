@@ -40,7 +40,7 @@ class WinApiException
 			return m_pszMessage;
 		}
 
-		DWORD LastError() noexcept
+		DWORD LastError() const noexcept
 		{
 			return m_dwError;
 		}

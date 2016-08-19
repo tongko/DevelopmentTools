@@ -14,8 +14,8 @@ CStdOut::CStdOut(BOOL bReadOnly)
 
 	if (m_hStdOut == INVALID_HANDLE_VALUE)
 	{
-		WinApiException ex(TEXT("CStdOut::ctor::CreateFile"), GetLastError());
-		TRACE(TEXT("CreateFile returns error (%lu): %S\r\n", ex.LastError, ex.Message));
+		WinApiException ex(_T("CStdOut::ctor::CreateFile"), GetLastError());
+		TRACE(_T("CreateFile returns error (%lu): %S\r\n"), ex.LastError(), ex.Message());
 	}
 }
 
@@ -29,3 +29,5 @@ CStdOut::operator HANDLE()
 {
 	return m_hStdOut;
 }
+
+

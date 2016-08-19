@@ -13,15 +13,17 @@
 #include <strsafe.h>
 #include <debugapi.h>
 #include <tchar.h>
+#include <string>
 
 using namespace std;
 
 
 // TODO: reference additional headers your program requires here
-#include "structs.h"
-#include "WinApiException.h"
-#include "HookHandler.h"
-
+#ifdef _UNICODE
+typedef	wstring _tstring;
+#else
+typedef string _tstring;
+#endif
 
 //	For Debugging
 #ifdef _DEBUG
@@ -30,3 +32,7 @@ void Trace(LPCTSTR pszFormat, ...);
 #else
 #define TRACE	__noop
 #endif // _DEBUG
+
+#include "structs.h"
+#include "class.h"
+#include "WinApiException.h"
